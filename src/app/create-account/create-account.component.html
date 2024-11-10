@@ -1,21 +1,36 @@
 <div class="col-md-6 offset-md-3">
     <h3>Create Account</h3>
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="accountForm">
         <div class="form-group mb-3">
             <label for="firstName" class="mb-2">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="account.firstName">
+            <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+            <div class="text-danger" *ngIf="accountForm.controls['firstName'].invalid && (accountForm.controls['firstName'].touched || accountForm.controls['firstName'].dirty)">
+                <span *ngIf="accountForm.controls['firstName'].errors?.['required']">First name is required</span>
+                <span *ngIf="accountForm.controls['firstName'].errors?.['maxlength']">Max 50 characters required</span>
+            </div>
         </div>
 
         <div class="form-group mb-3">
             <label for="lastName" class="mb-2">Last Name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="account.lastName">
+            <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+            <div class="text-danger" *ngIf="accountForm.controls['lastName'].invalid && (accountForm.controls['lastName'].touched || accountForm.controls['lastName'].dirty)">
+                <span *ngIf="accountForm.controls['lastName'].errors?.['required']">Last name is required</span>
+                <span *ngIf="accountForm.controls['lastName'].errors?.['maxlength']">Max 50 characters required</span>
+            </div>
         </div>
 
         <div class="form-group mb-3">
             <label for="email" class="mb-2">Email</label>
-            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="account.email">
+            <input type="email" class="form-control" id="email" name="email" formControlName="email">
+            <div class="text-danger" *ngIf="accountForm.controls['email'].invalid && (accountForm.controls['email'].touched || accountForm.controls['email'].dirty)">
+                <span *ngIf="accountForm.controls['email'].errors?.['required']">Email is required</span>
+                <span *ngIf="accountForm.controls['email'].errors?.['maxlength']">Max 100 characters required</span>
+                <span *ngIf="accountForm.controls['email'].errors?.['email']">Email is not proper</span>
+            </div>
         </div>
 
-        <button class="btn btn-success" type="submit">Submit</button>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success" type="button" (click)="onSubmit()">Submit Form</button>
+        </div>
     </form>
 </div>
