@@ -6,4 +6,5 @@ export class Account {
     firstName!: string;
     lastName!: string;
     email!: string;
+    balance!: number;
 }

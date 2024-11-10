@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -15,7 +16,7 @@ import { AccountService } from '../account.service';
 export class AccountListComponent implements OnInit {
     accounts!: Account[];
 
-    constructor(private accountService: AccountService) {
+    constructor(private accountService: AccountService, private router: Router) {
         this.getAccounts();
     }
 
@@ -27,5 +28,10 @@ export class AccountListComponent implements OnInit {
         this.accountService.getAccountsList().subscribe(data => {
             this.accounts = data as unknown as Account[];
         });
+    }
+
+    updateAccount(id: number) {
+        // Logic for updating account
+        this.router.navigate(['update-account', id]);
     }
 }

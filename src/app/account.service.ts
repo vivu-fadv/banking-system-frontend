@@ -18,4 +18,12 @@ export class AccountService {
   createAccount(account: Account): Observable<Object> {
     return this.httpClient.post(`${this.baseUrl}`, account);
   }
+
+  updateAccount(id: number, account: Account): Observable<Object> {
+    return this.httpClient.put(`${this.baseUrl}/${id}`, account);
+  }
+
+  getAccountById(id: number): Observable<Account> {
+    return this.httpClient.get<Account>(`${this.baseUrl}/${id}`);
+  }
 }
