@@ -34,4 +34,17 @@ export class AccountListComponent implements OnInit {
         // Logic for updating account
         this.router.navigate(['update-account', id]);
     }
+
+    deleteAccount(id: number) {
+        // Logic for deleting account
+        this.accountService.deleteAccount(id).subscribe(data => {
+            console.log(data);
+            this.getAccounts();
+        });
+    }
+
+    accountDetails(id: number) {
+        // Logic for account details
+        this.router.navigate(['account-details', id]);
+    }
 }

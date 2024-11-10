@@ -16,5 +16,5 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Banking Management System';
+  title = 'Banking Management Application';
 }

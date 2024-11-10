@@ -17,7 +17,9 @@
             <td> {{account.email}}</td>
             <td> {{account.balance | currency}}</td>
             <td>
-                <button class="btn btn-info" (click)="updateAccount(account.id)"> Update</button>
+                <button class="btn btn-primary" (click)="accountDetails(account.id)"> View</button>
+                <button class="btn btn-info" style="margin-left: 10px;" (click)="updateAccount(account.id)"> Update</button>
+                <button class="btn btn-danger" style="margin-left: 10px;" (click)="deleteAccount(account.id)"> Delete</button>
             </td>
         </tr>
     </tbody>

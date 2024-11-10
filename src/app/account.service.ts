@@ -26,4 +26,8 @@ export class AccountService {
   getAccountById(id: number): Observable<Account> {
     return this.httpClient.get<Account>(`${this.baseUrl}/${id}`);
   }
+
+  deleteAccount(id: number): Observable<Object> {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`);
+  }
 }
