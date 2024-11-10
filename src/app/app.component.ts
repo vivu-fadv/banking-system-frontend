@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { AccountListComponent } from './account-list/account-list.component';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -8,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [
     RouterOutlet,
-    AccountListComponent,
+    RouterModule,
     HttpClientModule
   ],
   templateUrl: './app.component.html',
