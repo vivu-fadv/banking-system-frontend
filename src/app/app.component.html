@@ -1,4 +1,21 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="accounts" routerLinkActive="active">Accounts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="create-account" routerLinkActive="active">Create Account</a>
+        </li>
+    </ul>
+</nav>
+
 <h1 class="text-center"> {{title}} </h1>
-<div class = "container">
+<div class="container">
     <router-outlet></router-outlet>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <span>All Rights Reserved 2024 Banking System</span>
+    </div>
+</footer>

@@ -12,8 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Banking System';
+  title = 'banking-system-frontend';
 }
