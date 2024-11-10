@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     RouterOutlet,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'banking-system-frontend';
+  title = 'Banking Management System';
 }
