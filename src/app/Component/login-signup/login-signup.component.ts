@@ -15,7 +15,7 @@ import { AccountService } from '../../Service/account.service';
   providers: [AccountService]
 })
 export class LoginSignupComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, private router: Router, private accountService: AccountService, private http: HttpClient) { 
 
   }
   signupform!: FormGroup;
@@ -46,20 +46,15 @@ export class LoginSignupComponent implements OnInit {
   }
 
   submitsignup() {
-    // this.http.post<signup>("http://localhost:3000/signup", this.signupform.value).subscribe(res => {
-    //   const user = res;
-    //   if (res) {
-    //     alert("user signed up successfully !!!!")
-    //   } else {
-    //     alert("Please try again")
-    //   }
-    //   this.signupform.reset();
-    // }, err => {
-    //   // alert("something went wrong try after sometime")
-    //   this.loginform.reset();
-    //   // alert("something went wrong !!")
-    //    this.router.navigate(["/server-error"])
-    // })
+    this.accountService.loginAccount(this.signupform.value).subscribe(res => {
+      alert("successfully signed up")
+      this.signupform.reset();
+      this.router.navigate(["/login-signup"])
+    }, err => {
+      alert("something went wrong try after sometime")
+      this.signupform.reset();
+      this.router.navigate(["/server-error"])
+    });
   }
 
   loginuser() {
@@ -89,9 +84,5 @@ export class LoginSignupComponent implements OnInit {
     //   this.loginform.reset();
     //   this.router.navigate(["/server-error"])
     // })
-  }
-
-  adminlogin() {
-    //this.router.navigate(['/adminlogin-signup']);
   }
 }

@@ -30,4 +30,8 @@ export class AccountService {
   deleteAccount(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.baseUrl}/${id}`);
   }
+
+  loginAccount(account: Account): Observable<Account> {
+    return this.httpClient.post<Account>(`${this.baseUrl}/login`, account);
+  }
 }

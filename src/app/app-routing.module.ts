@@ -4,6 +4,8 @@ import { CreateAccountComponent } from './Component/create-account/create-accoun
 import { UpdateAccountComponent } from './Component/update-account/update-account.component';
 import { AccountDetailsComponent } from './Component/account-details/account-details.component';
 import { LoginSignupComponent } from './Component/login-signup/login-signup.component';
+import { PagenotfoundComponent } from './Component/pagenotfound/pagenotfound.component';
+import { ServerErrorComponent } from './Component/server-error/server-error.component';
 
 export const routes: Routes = [
   { path: 'account-list', component: AccountListComponent },
@@ -11,7 +13,9 @@ export const routes: Routes = [
   { path: 'update-account/:id', component: UpdateAccountComponent },
   { path: 'account-details/:id', component: AccountDetailsComponent },
   { path: 'login-signup', component: LoginSignupComponent },
-  { path: '', redirectTo: '/login-signup', pathMatch: 'full' }
+  { path: 'server-error', component: ServerErrorComponent },
+  { path: '', redirectTo: '/login-signup', pathMatch: 'full' },
+  { path:'**', component:PagenotfoundComponent }
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes);

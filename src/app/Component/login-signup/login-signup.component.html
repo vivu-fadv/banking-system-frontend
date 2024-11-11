@@ -34,20 +34,17 @@
                                             (keydown.enter)="loginuser()">
 
                                     </div>
-                                    <div class="pt-1 mb-3 text-center">
-                                        <button class="btn btn-primary"
+                                    <div class="pt-1 mb-3 text-end">
+                                        <button class="btn btn-warning"
                                             type="button" [disabled]="this.loginform.invalid" (click)="loginuser()">Login</button>
                                     </div>
                                     <p class="mt-3 pb-lg-2">Don't have an account?
                                         <button (click)="signup()" style="color:black;cursor:pointer;font-weight: 700; background:none; border:none; padding:0;">
-                                            signup here</button>
+                                            Signup here</button>
                                     </p>
 
 
                                 </form>
-                                <!-- <div class="text-center">
-                                    <button (click)="adminlogin()" class="btn btn-warning">Admin login</button>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -81,8 +78,8 @@
                                     </h5>
 
                                     <div class="form-outline mb-2">
-                                        <label class="form-label">Name</label>
-                                        <input type="text" placeholder="Enter your name" formControlName="name"
+                                        <label class="form-label">UserName</label>
+                                        <input type="text" placeholder="Enter your username" formControlName="username"
                                             class="form-control form-control-lg">
                                     </div>
 

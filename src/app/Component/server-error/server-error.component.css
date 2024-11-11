@@ -1,0 +1,15 @@
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+}
+.btn1{
+    text-align: center;
+}
+.error-text{
+    text-align: center;
+    padding: 3px;
+    font-size: 25px;
+    font-family: cursive;
+}

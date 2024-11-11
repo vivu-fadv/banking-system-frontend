@@ -4,11 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { Account } from '../../Model/account';
 import { AccountService } from '../../Service/account.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-account-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './account-list.component.html',
   styleUrls: ['./account-list.component.css'],
   providers: [AccountService]
