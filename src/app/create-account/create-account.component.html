@@ -49,11 +49,22 @@
 
         <div class="col-md-4">
             <label for="state" class="form-label">State</label>
-            <input type="text" class="form-control" id="state" name="state" formControlName="state">
-            <div class="text-danger" *ngIf="accountForm.controls['state'].invalid || isFormSubmitted || (accountForm.controls['state'].touched || accountForm.controls['state'].dirty)">
-                <span *ngIf="accountForm.controls['state'].errors?.['required']">State is required</span>
-                <span *ngIf="accountForm.controls['state'].errors?.['maxlength']">Max 50 characters required</span>
-            </div>
+            <select class="form-select" formControlName="state" id="state" name="state">
+                <option selected disabled value="">Choose...</option>
+                <option>Alberta</option>
+                <option>British Columbia</option>
+                <option>Manitoba</option>
+                <option>New Brunswick</option>
+                <option>Newfoundland and Labrador</option>
+                <option>Northwest Territories</option>
+                <option>Nova Scotia</option>
+                <option>Nunavut</option>
+                <option>Ontario</option>
+                <option>Prince Edward Island</option>
+                <option>Quebec</option>
+                <option>Saskatchewan</option>
+                <option>Yukon</option>
+            </select>
         </div>
 
         <div class="col-md-4">
