@@ -1,0 +1,118 @@
+<!--login-->
+<section class="vh-100" *ngIf="isLoginMode">
+    <div class="container h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col col-xl-9">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-4 col-lg-6">
+                            <img src=" https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-2650.jpg?w=740&t=st=1682081909~exp=1682082509~hmac=28a4193142064138f62f8ba0637224cdf47879ae87c04fb55d7782d86f0dde06"
+                                class="img-fluid">
+                        </div>
+
+                        <!--form section-->
+                        <div class="col-md-6 col-lg-6 align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <form [formGroup]="loginform">
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color:orange"></i>
+                                        <span class="h1 fw-bold mb-0">Login</span>
+                                    </div>
+                                    <h5 class="fw-normal mb-3 pb-2" style="letter-spacing:1px;">Login into your Account
+                                    </h5>
+
+                                    <div class="form-outline mb-2">
+                                        <label class="form-label">Username</label>
+                                        <input type="username" placeholder="Enter your username" formControlName="username"
+                                            class="form-control form-control-lg">
+                                    </div>
+
+                                    <div class="form-outline mb-2">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" placeholder="Enter your password"
+                                            formControlName="password" class="form-control form-control-lg"
+                                            (keydown.enter)="loginuser()">
+
+                                    </div>
+                                    <div class="pt-1 mb-3 text-center">
+                                        <button class="btn btn-primary"
+                                            type="button" [disabled]="this.loginform.invalid" (click)="loginuser()">Login</button>
+                                    </div>
+                                    <p class="mt-3 pb-lg-2">Don't have an account?
+                                        <button (click)="signup()" style="color:black;cursor:pointer;font-weight: 700; background:none; border:none; padding:0;">
+                                            signup here</button>
+                                    </p>
+
+
+                                </form>
+                                <!-- <div class="text-center">
+                                    <button (click)="adminlogin()" class="btn btn-warning">Admin login</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--signup-->
+<section class="vh-100" *ngIf="!isLoginMode">
+    <div class="container h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col col-xl-9">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-4 col-lg-6">
+                            <img src="https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg?w=740&t=st=1682087756~exp=1682088356~hmac=85a61c7a0fdf72289e90e196123f17057dadf1de6e71a772c8cd323a03b24355"
+                                class="img-fluid">
+                        </div>
+
+                        <!--form section-->
+                        <div class="col-md-6 col-lg-6 align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <form>
+                                    <div class="d-flex align-items-center mb-3 pb-1">
+                                        <i class="fas fa-cubes fa-2x me-3" style="color:orange"></i>
+                                        <span class="h1 fw-bold mb-0">Signup</span>
+                                    </div>
+                                    <h5 class="fw-normal mb-3 pb-2" style="letter-spacing:1px;">Signup into your Account
+                                    </h5>
+
+                                    <div class="form-outline mb-2">
+                                        <label class="form-label">Name</label>
+                                        <input type="text" placeholder="Enter your name" formControlName="name"
+                                            class="form-control form-control-lg">
+                                    </div>
+
+                                    <div class="form-outline mb-2">
+                                        <label class="form-label">Email address</label>
+                                        <input type="email" placeholder="Enter your email id" formControlName="email"
+                                            class="form-control form-control-lg">
+                                    </div>
+
+                                    <div class="form-outline mb-2">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" placeholder="Enter your email password"
+                                            formControlName="password" class="form-control form-control-lg">
+                                    </div>
+                                    <div class="pt-1 mb-3 text-center">
+                                        <button class="btn btn-success" [disabled]="this.signupform.invalid"
+                                            type="button" (click)="submitsignup()">Signup</button>
+                                    </div>
+                                    <p class="mt-5 pb-lg-2">Already have an account?
+                                        <a (click)="login()" style="color:black;cursor:pointer;font-weight: 700;"> Login
+                                            here</a>
+                                    </p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
