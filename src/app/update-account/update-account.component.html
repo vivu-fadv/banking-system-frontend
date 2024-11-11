@@ -21,7 +21,7 @@
 
         <div class="col-md-4">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" formControlName="username" [(ngModel)]="account.username">
+            <input type="text" class="form-control disabled" id="username" name="username" formControlName="username" [(ngModel)]="account.username">
             <div class="text-danger" *ngIf="accountForm.controls['username'].invalid || isFormSubmitted || (accountForm.controls['username'].touched || accountForm.controls['username'].dirty)">
                 <span *ngIf="accountForm.controls['username'].errors?.['required']">Username is required</span>
                 <span *ngIf="accountForm.controls['username'].errors?.['maxlength']">Max 50 characters required</span>
