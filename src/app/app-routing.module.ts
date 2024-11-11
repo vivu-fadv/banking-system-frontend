@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
-import { AccountListComponent } from './account-list/account-list.component';
-import { CreateAccountComponent } from './create-account/create-account.component';
-import { UpdateAccountComponent } from './update-account/update-account.component';
-import { AccountDetailsComponent } from './account-details/account-details.component';
+import { AccountListComponent } from './Component/account-list/account-list.component';
+import { CreateAccountComponent } from './Component/create-account/create-account.component';
+import { UpdateAccountComponent } from './Component/update-account/update-account.component';
+import { AccountDetailsComponent } from './Component/account-details/account-details.component';
 
 export const routes: Routes = [
   { path: 'account-list', component: AccountListComponent },

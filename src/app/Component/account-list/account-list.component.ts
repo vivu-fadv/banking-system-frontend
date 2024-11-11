@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Account } from '../account';
-import { AccountService } from '../account.service';
+import { Account } from '../../Model/account';
+import { AccountService } from '../../Service/account.service';
 import { Router } from '@angular/router';
 
 @Component({

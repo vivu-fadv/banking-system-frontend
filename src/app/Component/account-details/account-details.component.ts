@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Account } from '../account';
+import { Account } from '../../Model/account';
 import { ActivatedRoute } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AccountService } from '../../Service/account.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
