@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Account } from '../account';
 import { AccountService } from '../account.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';;
 
 @Component({
   selector: 'app-update-account',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './update-account.component.html',
   styleUrl: './update-account.component.css',
   providers: [AccountService]
@@ -17,6 +17,18 @@ import { HttpClientModule } from '@angular/common/http';;
 export class UpdateAccountComponent {
   id!: number;
   account: Account = new Account();
+  isFormSubmitted: boolean = false;
+
+  accountForm = new FormGroup({
+    firstName: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    lastName: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    email: new FormControl("", [Validators.required, Validators.maxLength(100), Validators.email]),
+    username: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    city: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    state: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    zip: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    isAgree: new FormControl(false)
+  });
 
   constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) { }
 
@@ -25,6 +37,13 @@ export class UpdateAccountComponent {
     this.id = this.route.snapshot.params['id'];
     this.accountService.getAccountById(this.id).subscribe(data => {
       this.account = data;
+      this.accountForm.value.firstName = data.firstName;
+      this.accountForm.value.lastName = data.lastName;
+      this.accountForm.value.email = data.email;
+      this.accountForm.value.username = data.username;
+      this.accountForm.value.city = data.city;
+      this.accountForm.value.state = data.state;
+      this.accountForm.value.zip = data.zip;
     },
       error => console.log(error));
   }
@@ -45,7 +64,21 @@ export class UpdateAccountComponent {
 
   onSubmit() {
     // Logic for form submission
-    console.log(this.account);
-    this.updateAccount();
+    const isFormValid = this.accountForm.valid;
+    if (isFormValid) {
+      // Logic for form submission
+      this.account.firstName = this.accountForm.value.firstName || '';
+      this.account.lastName = this.accountForm.value.lastName || '';
+      this.account.email = this.accountForm.value.email || '';
+      this.account.username = this.accountForm.value.username || '';
+      this.account.city = this.accountForm.value.city || '';
+      this.account.state = this.accountForm.value.state || '';
+      this.account.zip = this.accountForm.value.zip || '';
+
+      console.log(this.account);
+      this.isFormSubmitted = true;
+      this.accountForm.markAsTouched();
+      this.updateAccount();
+    }
   }
 }

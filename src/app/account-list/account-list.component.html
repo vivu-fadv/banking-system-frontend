@@ -5,6 +5,10 @@
         <tr>
             <th> First Name</th>
             <th> Last Name</th>
+            <th> Username</th>
+            <th> City</th>
+            <th> State</th>
+            <th> Zip </th>
             <th> Email</th>
             <th> Balance</th>
             <th> Actions</th>
@@ -14,7 +18,11 @@
         <tr *ngFor="let account of accounts">
             <td> {{account.firstName}}</td>
             <td> {{account.lastName}}</td>
+            <td> {{account.username}}</td>
             <td> {{account.email}}</td>
+            <td> {{account.city}}</td>
+            <td> {{account.state}}</td>
+            <td> {{account.zip}}</td>
             <td> {{account.balance | currency}}</td>
             <td>
                 <button class="btn btn-primary" (click)="accountDetails(account.id)"> View</button>

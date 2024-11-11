@@ -7,4 +7,8 @@ export class Account {
     lastName!: string;
     email!: string;
     balance!: number;
+    username!: string;
+    city!: string;
+    state!: string;
+    zip!: string;
 }
