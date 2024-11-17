@@ -27,6 +27,7 @@ export class CreateAccountComponent implements OnInit {
     city: new FormControl("", [Validators.required, Validators.maxLength(50)]),
     state: new FormControl("", [Validators.required, Validators.maxLength(50)]),
     zip: new FormControl("", [Validators.required, Validators.maxLength(50)]),
+    balance: new FormControl(100, [Validators.required, Validators.min(100)]), //Added Balance
     isAgree: new FormControl(false)
   });
 
@@ -61,6 +62,7 @@ export class CreateAccountComponent implements OnInit {
       this.account.city = this.accountForm.value.city || '';
       this.account.state = this.accountForm.value.state || '';
       this.account.zip = this.accountForm.value.zip || '';
+      this.account.balance = this.accountForm.value.balance || 100; //Mapping the balance field
 
       console.log(this.account);
       this.isFormSubmitted = true;

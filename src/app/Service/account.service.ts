@@ -23,6 +23,10 @@ export class AccountService {
     return this.httpClient.put(`${this.baseUrl}/${id}`, account);
   }
 
+  updateAccountBalance(id: number, balance: number): Observable<Object> {
+    return this.httpClient.put(`${this.baseUrl}/${id}/balance`, { balance });
+  }  
+
   getAccountById(id: number): Observable<Account> {
     return this.httpClient.get<Account>(`${this.baseUrl}/${id}`);
   }

@@ -1,27 +1,51 @@
-<h3> View Account Details</h3>
-<div>
-    <div>
-        <label> <b> First Name:</b> </label> {{account.firstName}}
+<h3 style="text-align: center; color: #4CAF50; font-family: Arial, sans-serif;">
+    View Account Details
+</h3>
+<div style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #f9f9f9;">
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>First Name:</b></label> 
+        <span style="float: right;">{{account.firstName}}</span>
     </div>
-    <div>
-        <label> <b> Last Name:</b> </label> {{account.lastName}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>Last Name:</b></label> 
+        <span style="float: right;">{{account.lastName}}</span>
     </div>
-    <div>
-        <label> <b> Email:</b> </label> {{account.email}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>Email:</b></label> 
+        <span style="float: right;">{{account.email}}</span>
     </div>
-    <div>
-        <label> <b> Username:</b> </label> {{account.username}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>Username:</b></label> 
+        <span style="float: right;">{{account.username}}</span>
     </div>
-    <div>
-        <label> <b> City:</b> </label> {{account.city}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>City:</b></label> 
+        <span style="float: right;">{{account.city}}</span>
     </div>
-    <div>
-        <label> <b> State:</b> </label> {{account.state}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>State:</b></label> 
+        <span style="float: right;">{{account.state}}</span>
     </div>
-    <div>
-        <label> <b> Zip:</b> </label> {{account.zip}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>Zip:</b></label> 
+        <span style="float: right;">{{account.zip}}</span>
     </div>
-    <div>
-        <label> <b> Balance:</b> </label> {{account.balance | currency}}
+    <div style="margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 16px; color: #333;">
+        <label><b>Balance:</b></label> 
+        <span style="float: right; color: #4CAF50;">{{account.balance | currency}}</span>
+    </div>
+
+    <!-- Buttons -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button 
+            
+            style="padding: 10px 20px; margin-right: 10px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Withdraw
+        </button>
+        <button 
+            
+            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Deposit
+        </button>
     </div>
 </div>

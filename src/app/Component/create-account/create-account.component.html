@@ -76,6 +76,16 @@
             </div>
         </div>
 
+        <div class="col-md-4">
+            <label for="balance" class="form-label">Balance</label>
+            <input type="number" class="form-control" id="balance" formControlName="balance" placeholder="Enter a balance (min 100)">
+            <div class="text-danger" *ngIf="accountForm.controls['balance']?.invalid && (accountForm.controls['balance']?.touched || isFormSubmitted)">
+              <span *ngIf="accountForm.controls['balance']?.errors?.['required']">Balance is required</span>
+              <span *ngIf="accountForm.controls['balance']?.errors?.['min']">Balance must be at least 100</span>
+            </div>
+          </div>
+          
+
         <div class="col-12">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" formControlName="isAgree">
