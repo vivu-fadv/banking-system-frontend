@@ -27,6 +27,14 @@ export class AccountService {
     return this.httpClient.put(`${this.baseUrl}/${id}/balance`, { balance });
   }  
 
+  depositAmount(id: number, amount: number): Observable<Account> {
+    return this.httpClient.put<Account>(`${this.baseUrl}/${id}/deposit`, { amount });
+  }
+
+  withdrawAmount(id: number, amount: number): Observable<Account> {
+    return this.httpClient.put<Account>(`${this.baseUrl}/${id}/withdraw`, { amount });
+  }
+
   getAccountById(id: number): Observable<Account> {
     return this.httpClient.get<Account>(`${this.baseUrl}/${id}`);
   }
