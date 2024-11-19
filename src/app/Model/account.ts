@@ -11,4 +11,5 @@ export class Account {
     city!: string;
     state!: string;
     zip!: string;
+    password!: string;
 }

@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-//import { signup, login } from '../contactmodel';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { Account } from '../../Model/account';
 import { Router } from '@angular/router';
 import { AccountService } from '../../Service/account.service';
 
@@ -12,30 +17,34 @@ import { AccountService } from '../../Service/account.service';
   templateUrl: './login-signup.component.html',
   styleUrls: ['./login-signup.component.css'],
   imports: [CommonModule, HttpClientModule, ReactiveFormsModule],
-  providers: [AccountService]
+  providers: [AccountService],
 })
 export class LoginSignupComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder, private router: Router, private accountService: AccountService, private http: HttpClient) { 
-
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private accountService: AccountService,
+    private http: HttpClient
+  ) {}
+  account: Account = new Account();
   signupform!: FormGroup;
   loginform!: FormGroup;
-  isLoginMode:boolean = true;
+  isLoginMode: boolean = true;
   ngOnInit(): void {
     // userdata should not be stored in localstorage
-    localStorage.removeItem("logindata")
-    localStorage.removeItem("adminlogin")
+    localStorage.removeItem('logindata');
+    localStorage.removeItem('adminlogin');
 
     this.signupform = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+      password: ['', Validators.required],
+    });
     // login
     this.loginform = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+      password: ['', Validators.required],
+    });
   }
 
   signup() {
@@ -46,43 +55,37 @@ export class LoginSignupComponent implements OnInit {
   }
 
   submitsignup() {
-    this.accountService.loginAccount(this.signupform.value).subscribe(res => {
-      alert("successfully signed up")
-      this.signupform.reset();
-      this.router.navigate(["/login-signup"])
-    }, err => {
-      alert("something went wrong try after sometime")
-      this.signupform.reset();
-      this.router.navigate(["/server-error"])
-    });
+    this.accountService.loginAccount(this.signupform.value).subscribe(
+      (res) => {
+        alert('successfully signed up');
+        this.signupform.reset();
+        this.router.navigate(['/login-signup']);
+      },
+      (err) => {
+        alert('something went wrong try after sometime');
+        this.signupform.reset();
+        this.router.navigate(['/server-error']);
+      }
+    );
   }
 
   loginuser() {
-    if(this.loginform.value.username === 'demo' && this.loginform.value.password === '123')
-    {
-      this.router.navigate(['/account-list']);
+    if (
+      this.loginform.value.username !== '' &&
+      this.loginform.value.password !== ''
+    ) {
+      this.account.password = this.loginform.value.password;
+      this.account.username = this.loginform.value.username;
+      this.accountService.loginAccount(this.account).subscribe((data) => {
+        if (data) {
+          this.router.navigate(['/account-list']);
+          localStorage.setItem('isLoggedin', 'true');
+        }
+        else
+        {
+          alert('Invalid username or password');
+        }
+      });
     }
-    // this.http.get<login[]>("http://localhost:3000/signup").subscribe(res => {
-    //   // matching email & password
-    //   const user = res.find((a: any) => {
-    //     return a.email === this.loginform.value.email && a.password === this.loginform.value.password;
-    //   })
-    //   // check condition for login
-
-    //   if (user) {
-    //     alert("successfully logged in");
-    //     this.loginform.reset();
-    //     this.router.navigate(["/contactlist"])
-    //     // storing data in local storage
-    //     localStorage.setItem('logindata', JSON.stringify(user))
-    //   } else {
-    //     alert("user not found with these credentials")
-    //     this.loginform.reset();
-    //   }
-    // }, err => {
-    //   // alert("something went wrong try after sometime")
-    //   this.loginform.reset();
-    //   this.router.navigate(["/server-error"])
-    // })
   }
 }
