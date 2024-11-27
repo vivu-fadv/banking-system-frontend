@@ -69,7 +69,7 @@
                         <!--form section-->
                         <div class="col-md-6 col-lg-6 align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-                                <form>
+                                <form [formGroup]="signupform">
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color:orange"></i>
                                         <span class="h1 fw-bold mb-0">Signup</span>
@@ -85,13 +85,13 @@
 
                                     <div class="form-outline mb-2">
                                         <label class="form-label">Email address</label>
-                                        <input type="email" placeholder="Enter your email id" formControlName="email"
+                                        <input type="email" placeholder="Enter your email address" formControlName="email"
                                             class="form-control form-control-lg">
                                     </div>
 
                                     <div class="form-outline mb-2">
                                         <label class="form-label">Password</label>
-                                        <input type="password" placeholder="Enter your email password"
+                                        <input type="password" placeholder="Enter your password"
                                             formControlName="password" class="form-control form-control-lg">
                                     </div>
                                     <div class="pt-1 mb-3 text-center">

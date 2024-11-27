@@ -34,12 +34,13 @@ export class LoginSignupComponent implements OnInit {
     // userdata should not be stored in localstorage
     localStorage.removeItem('logindata');
     localStorage.removeItem('adminlogin');
-
+    // signup
     this.signupform = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
+      email: ['', Validators.required],
     });
+
     // login
     this.loginform = this.formBuilder.group({
       username: ['', Validators.required],
@@ -55,18 +56,24 @@ export class LoginSignupComponent implements OnInit {
   }
 
   submitsignup() {
-    this.accountService.loginAccount(this.signupform.value).subscribe(
-      (res) => {
-        alert('successfully signed up');
-        this.signupform.reset();
-        this.router.navigate(['/login-signup']);
-      },
-      (err) => {
-        alert('something went wrong try after sometime');
-        this.signupform.reset();
-        this.router.navigate(['/server-error']);
-      }
-    );
+    if (
+      this.signupform.value.username !== '' &&
+      this.signupform.value.password !== '' &&
+      this.signupform.value.email !== ''
+    ) {
+      this.account.password = this.signupform.value.password;
+      this.account.username = this.signupform.value.username;
+      this.account.email = this.signupform.value.email;
+      this.accountService.signupAccount(this.account).subscribe((data) => {
+        if (data) {
+          this.isLoginMode = true;
+        }
+        else
+        {
+          alert('Signup failed');
+        }
+      });
+    }
   }
 
   loginuser() {

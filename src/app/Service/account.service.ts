@@ -46,4 +46,8 @@ export class AccountService {
   loginAccount(account: Account): Observable<Object> {
     return this.httpClient.post(`${this.baseUrl}/login`, account);
   }
+
+  signupAccount(account: Account): Observable<Object> {
+    return this.httpClient.post(`${this.baseUrl}/signup`, account);
+  }
 }
