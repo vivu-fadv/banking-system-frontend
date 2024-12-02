@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent implements OnInit {
   title = '';
   isVisible: boolean = false;
+  username: string = '';
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
         // Check the current route and update isVisible
         const loginId = localStorage.getItem('loginId');
         this.isVisible = loginId !== null && Number(loginId) > 0 ? true : false;
+        this.username = localStorage.getItem('username') || '';
       }
     });
   }

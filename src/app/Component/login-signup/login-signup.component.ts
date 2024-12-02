@@ -32,8 +32,7 @@ export class LoginSignupComponent implements OnInit {
   isLoginMode: boolean = true;
   ngOnInit(): void {
     // userdata should not be stored in localstorage
-    localStorage.removeItem('logindata');
-    localStorage.removeItem('adminlogin');
+    localStorage.removeItem('loginId');
     // signup
     this.signupform = this.formBuilder.group({
       username: ['', Validators.required],
@@ -85,9 +84,10 @@ export class LoginSignupComponent implements OnInit {
       this.account.username = this.loginform.value.username;
       this.accountService.loginAccount(this.account).subscribe((data) => {
         if (data) {
+          var result = data as unknown as Account;
           this.router.navigate(['/account-list']);
-          localStorage.setItem('isLoggedin', 'true');
-          localStorage.setItem('loginId', data.toString());
+          localStorage.setItem('loginId', result.id.toString());
+          localStorage.setItem('username', result.username);
         }
         else
         {
