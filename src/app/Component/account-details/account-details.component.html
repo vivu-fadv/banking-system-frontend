@@ -37,15 +37,14 @@
 
     <!-- Buttons -->
     <div style="text-align: center; margin-top: 20px;">
-        <button class="btn btn-danger"
-            (click)="onWithdraw()"
-            style="padding: 10px 20px; margin-right: 10px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        <button class="btn btn-danger withdraw"
+            (click)="onWithdraw()">
             Withdraw
         </button>
-        <button  class="btn btn-success"
-            (click)="onDeposit()"
-            style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        <button  class="btn btn-success deposit"
+            (click)="onDeposit()">
             Deposit
         </button>
+        <button class="btn btn-secondary cancel" type="button" (click)="goToAccountList()">Cancel</button>
     </div>
 </div>

@@ -1,0 +1,14 @@
+.withdraw
+{
+    padding: 10px 20px; margin-right: 10px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;
+}
+
+.deposit
+{
+    padding: 10px 20px; margin-right: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;
+}
+
+.cancel
+{
+    padding: 10px 20px; color: white; border: none; border-radius: 5px; cursor: pointer;
+}

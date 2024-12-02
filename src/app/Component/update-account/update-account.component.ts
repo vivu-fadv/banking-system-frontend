@@ -27,7 +27,7 @@ export class UpdateAccountComponent {
     city: new FormControl("", [Validators.required, Validators.maxLength(50)]),
     state: new FormControl("", [Validators.required, Validators.maxLength(50)]),
     zip: new FormControl("", [Validators.required, Validators.maxLength(50)]),
-    //balance: new FormControl("", [Validators.required]),
+    balance: new FormControl(0, [Validators.required]),
     //isAgree: new FormControl(false)
   });
 
@@ -45,7 +45,7 @@ export class UpdateAccountComponent {
       this.accountForm.value.city = data.city;
       this.accountForm.value.state = data.state;
       this.accountForm.value.zip = data.zip;
-      //this.accountForm.value.balance = data.balance;
+      this.accountForm.value.balance = data.balance;
     },
       error => console.log(error));
   }
@@ -76,7 +76,7 @@ export class UpdateAccountComponent {
       this.account.city = this.accountForm.value.city || '';
       this.account.state = this.accountForm.value.state || '';
       this.account.zip = this.accountForm.value.zip || '';
-      //this.account.balance = this.accountForm.value.balance || ''; 
+      this.account.balance = this.accountForm.value.balance || 0; 
 
       console.log(this.account);
       this.isFormSubmitted = true;

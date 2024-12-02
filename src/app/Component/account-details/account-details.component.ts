@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../Service/account.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-details',
@@ -17,7 +18,7 @@ export class AccountDetailsComponent implements OnInit {
   id!: number;
   account!: Account;
   depositAmount: number = 0;
-  constructor(private route:ActivatedRoute, private accountService: AccountService) { }
+  constructor(private route:ActivatedRoute, private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
     // Logic for initialization
@@ -74,5 +75,8 @@ export class AccountDetailsComponent implements OnInit {
     }
   }
   
-
+  goToAccountList() {
+    // Logic for navigation to account
+    this.router.navigate(['/account-list']);
+  }
 }
