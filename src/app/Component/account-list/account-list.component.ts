@@ -26,9 +26,12 @@ export class AccountListComponent implements OnInit {
     }
 
     private getAccounts() {
-        this.accountService.getAccountsList().subscribe(data => {
-            this.accounts = data as unknown as Account[];
-        });
+        var id = localStorage.getItem('loginId');
+        if (id !== null) {
+            this.accountService.getAccountsList(Number(id)).subscribe(data => {
+                this.accounts = data as unknown as Account[];
+            });
+        }
     }
 
     updateAccount(id: number) {

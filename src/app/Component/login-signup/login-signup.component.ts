@@ -87,6 +87,7 @@ export class LoginSignupComponent implements OnInit {
         if (data) {
           this.router.navigate(['/account-list']);
           localStorage.setItem('isLoggedin', 'true');
+          localStorage.setItem('loginId', data.toString());
         }
         else
         {

@@ -11,8 +11,8 @@ export class AccountService {
   private baseUrl = 'http://localhost:8080/api/v1/accounts';
   constructor(private httpClient: HttpClient) { }
 
-  getAccountsList(): Observable<Account> {
-    return this.httpClient.get<Account>(`${this.baseUrl}`);
+  getAccountsList(id: number): Observable<Account> {
+    return this.httpClient.get<Account>(`${this.baseUrl}/${id}/getall`);
   }
 
   createAccount(account: Account): Observable<Object> {
