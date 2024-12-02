@@ -16,44 +16,47 @@ import { FormsModule } from '@angular/forms';
 })
 export class AccountListComponent implements OnInit {
     accounts!: Account[];
-    isButtonDisabled: boolean = false;
+  accounts!: Account[];
+  isButtonDisabled: boolean = false;
 
-    constructor(private accountService: AccountService, private router: Router) {
+  constructor(private accountService: AccountService, private router: Router) {
+    this.getAccounts();
+  }
+
+  ngOnInit(): void {
+    this.getAccounts();
+    const isAdmin = localStorage.getItem('isAdmin');
+    this.isButtonDisabled = isAdmin === 'true' ? false : true;
+  }
+
+  private getAccounts() {
+    var id = localStorage.getItem('loginId');
+    if (id !== null) {
+      this.accountService.getAccountsList(Number(id)).subscribe((data) => {
+        this.accounts = data as unknown as Account[];
+      });
+    }
+  }
+
+  updateAccount(id: number) {
+    // Logic for updating account
+    alert('Account updated successfully');
+    this.router.navigate(['update-account', id]);
+  }
+
+  deleteAccount(id: number) {
+    // Logic for deleting account
+    if (confirm('Are you sure to delete this account?')) {
+      this.accountService.deleteAccount(id).subscribe((data) => {
+        console.log(data);
+        alert('Account deleted successfully');
         this.getAccounts();
+      });
     }
+  }
 
-    ngOnInit(): void {
-        this.getAccounts();
-        const isAdmin = localStorage.getItem('isAdmin');
-        this.isButtonDisabled = isAdmin === 'true' ? false : true;
-    }
-
-    private getAccounts() {
-        var id = localStorage.getItem('loginId');
-        if (id !== null) {
-            this.accountService.getAccountsList(Number(id)).subscribe(data => {
-                this.accounts = data as unknown as Account[];
-            });
-        }
-    }
-
-    updateAccount(id: number) {
-        // Logic for updating account
-        alert('Account updated successfully');
-        this.router.navigate(['update-account', id]);
-    }
-
-    deleteAccount(id: number) {
-        // Logic for deleting account
-        this.accountService.deleteAccount(id).subscribe(data => {
-            console.log(data);
-            alert('Account deleted successfully');
-            this.getAccounts();
-        });
-    }
-
-    accountDetails(id: number) {
-        // Logic for account details
-        this.router.navigate(['account-details', id]);
-    }
+  accountDetails(id: number) {
+    // Logic for account details
+    this.router.navigate(['account-details', id]);
+  }
 }
