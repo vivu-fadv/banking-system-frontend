@@ -54,6 +54,7 @@ export class UpdateAccountComponent {
     this.accountService.updateAccount(this.id, this.account).subscribe(data => {
       console.log(data);
       this.account = new Account();
+      alert('Account updated successfully');
       this.goToAccountList();
     },
       error => console.log(error));
