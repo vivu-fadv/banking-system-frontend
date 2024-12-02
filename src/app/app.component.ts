@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterOutlet, Router } from '@angular/router';
+import { RouterModule, RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -17,16 +17,22 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = '';
-
+  isVisible: boolean = false;
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-
+    // Listen for route changes
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Check the current route and update isVisible
+        const loginId = localStorage.getItem('loginId');
+        this.isVisible = loginId !== null && Number(loginId) > 0 ? true : false;
+      }
+    });
   }
   
   logout() {
-    localStorage.removeItem("logindata")
-    localStorage.removeItem("adminlogin")
+    localStorage.setItem('loginId', '0')
     this.router.navigate(['/login-signup'])
   }
 }
