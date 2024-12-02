@@ -15,7 +15,6 @@ import { FormsModule } from '@angular/forms';
   providers: [AccountService]
 })
 export class AccountListComponent implements OnInit {
-    accounts!: Account[];
   accounts!: Account[];
   isButtonDisabled: boolean = false;
 
@@ -40,7 +39,6 @@ export class AccountListComponent implements OnInit {
 
   updateAccount(id: number) {
     // Logic for updating account
-    alert('Account updated successfully');
     this.router.navigate(['update-account', id]);
   }
 
