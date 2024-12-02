@@ -12,4 +12,5 @@ export class Account {
     state!: string;
     zip!: string;
     password!: string;
+    isAdmin!: boolean;
 }

@@ -65,6 +65,7 @@ export class LoginSignupComponent implements OnInit {
       this.account.email = this.signupform.value.email;
       this.accountService.signupAccount(this.account).subscribe((data) => {
         if (data) {
+          alert('Account created successfully!');
           this.isLoginMode = true;
         }
         else
@@ -88,6 +89,7 @@ export class LoginSignupComponent implements OnInit {
           this.router.navigate(['/account-list']);
           localStorage.setItem('loginId', result.id.toString());
           localStorage.setItem('username', result.username);
+          localStorage.setItem('isAdmin', result.isAdmin.toString());
         }
         else
         {

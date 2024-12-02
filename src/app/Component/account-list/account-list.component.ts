@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AccountListComponent implements OnInit {
     accounts!: Account[];
+    isButtonDisabled: boolean = false;
 
     constructor(private accountService: AccountService, private router: Router) {
         this.getAccounts();
@@ -23,6 +24,8 @@ export class AccountListComponent implements OnInit {
 
     ngOnInit(): void {
         this.getAccounts();
+        const isAdmin = localStorage.getItem('isAdmin');
+        this.isButtonDisabled = isAdmin === 'true' ? false : true;
     }
 
     private getAccounts() {
@@ -36,6 +39,7 @@ export class AccountListComponent implements OnInit {
 
     updateAccount(id: number) {
         // Logic for updating account
+        alert('Account updated successfully');
         this.router.navigate(['update-account', id]);
     }
 
@@ -43,6 +47,7 @@ export class AccountListComponent implements OnInit {
         // Logic for deleting account
         this.accountService.deleteAccount(id).subscribe(data => {
             console.log(data);
+            alert('Account deleted successfully');
             this.getAccounts();
         });
     }
