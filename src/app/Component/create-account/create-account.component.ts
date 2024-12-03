@@ -41,6 +41,7 @@ export class CreateAccountComponent implements OnInit {
     this.accountService.createAccount(this.account).subscribe(data => {
       console.log(data);
       this.account = new Account();
+      alert('Account created successfully');
       this.goToAccountList();
     },
       error => console.log(error));
