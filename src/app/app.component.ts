@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent implements OnInit {
   title = '';
   isVisible: boolean = false;
+  isAdminVisible: boolean = false;
   username: string = '';
   constructor(private router: Router) {}
 
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
         const loginId = localStorage.getItem('loginId');
         this.isVisible = loginId !== null && Number(loginId) > 0 ? true : false;
         this.username = localStorage.getItem('username') || '';
+        this.isAdminVisible = localStorage.getItem('isAdmin') === 'true' && this.isVisible ? true : false;
       }
     });
   }

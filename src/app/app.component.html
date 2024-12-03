@@ -10,7 +10,7 @@
         </h1>
         <div>
             <span [hidden]="!isVisible" style="color: white; font-size: 24px; margin-right: 10px;">Welcome {{username}}</span>
-            <button class="btn btn-secondary me-2" routerLink="/create-account" [hidden]="!isVisible" routerLinkActive="active">Create
+            <button class="btn btn-secondary me-2" routerLink="/create-account" [hidden]="!isAdminVisible" routerLinkActive="active">Create
                 Account</button>
             <button (click)="logout()" class="btn btn-warning" [hidden]="!isVisible" routerLink="/">Logout</button>
         </div>
